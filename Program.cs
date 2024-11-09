@@ -23,6 +23,12 @@ try
             Benchmarker.Do<P53>();
             break;
 
+        case 167:
+            program = new P167();
+            program.Run();
+            Benchmarker.Do<P167>();
+            break;
+
         default:
             throw new Exception("Not valid problem id");
             break;
