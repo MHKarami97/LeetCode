@@ -1,33 +1,31 @@
-﻿using BenchmarkDotNet.Running;
-using LeetCode;
+﻿using LeetCode;
 using LeetCode.Problems;
 
 Console.WriteLine("Start");
 
 try
 {
-    const int ProblemId = 53;
-    const bool NeedBenchmark = false;
+    const int problemId = 53;
+    IProgram program;
 
 
-    switch (ProblemId)
+    switch (problemId)
     {
         case 242:
-            var p242 = new P242().IsAnagram("anagram", "nagaram");
+            program = new P242();
+            program.Run();
+            Benchmarker.Do<P242>();
             break;
 
         case 53:
-            var p53 = new P53().MaxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+            program = new P53();
+            program.Run();
+            Benchmarker.Do<P53>();
             break;
 
         default:
-            Console.WriteLine("Not valid problem id");
+            throw new Exception("Not valid problem id");
             break;
-    }
-
-    if (NeedBenchmark)
-    {
-        BenchmarkRunner.Run<BenchmarkCode>();
     }
 }
 catch (Exception e)

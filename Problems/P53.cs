@@ -1,4 +1,6 @@
-﻿namespace LeetCode.Problems;
+﻿using BenchmarkDotNet.Attributes;
+
+namespace LeetCode.Problems;
 
 /*
 Given an integer array nums, find the
@@ -32,9 +34,15 @@ Constraints:
 
 Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 */
-public class P53
+public class P53 : IProgram
 {
-    public int MaxSubArray(int[] nums)
+    [Benchmark]
+    public void Run()
+    {
+        _ = MaxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+    }
+
+    private int MaxSubArray(int[] nums)
     {
         var maxSubArrayValue = nums[0];
         var currentSum = 0;

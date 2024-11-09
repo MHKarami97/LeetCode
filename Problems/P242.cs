@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using BenchmarkDotNet.Attributes;
 
 namespace LeetCode.Problems;
 
@@ -27,9 +28,15 @@ s and t consist of lowercase English letters.
 
 Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
 */
-public class P242
+public class P242 : IProgram
 {
-    public bool IsAnagram(string s, string t)
+    [Benchmark]
+    public void Run()
+    {
+        _ = IsAnagram("anagram", "nagaram");
+    }
+
+    private bool IsAnagram(string s, string t)
     {
         if (s.Length != t.Length)
             return false;
